@@ -18,11 +18,11 @@ async function gif2canvas(url) {
         context.putImageData(image, 0, 0);
 
         // draw text
-        context.font = `normal 20px sans-serif`;
-        context.fillStyle = 'red';
-        context.textAlign = 'left';
+        context.font = `normal 30px sans-serif`;
+        context.fillStyle = 'white';
+        context.textAlign = 'center';
         context.textBaseline = 'top';
-        context.fillText('hello', 10, 10);
+        context.fillText('不错不错！', info.width / 2, info.height - 50);
 
         return canvas;
     });
@@ -47,11 +47,11 @@ function gif2canvas2(image) {
                 context.drawImage(canvas, 0, 0);
 
                 // draw text
-                context.font = `normal 20px sans-serif`;
-                context.fillStyle = 'red';
-                context.textAlign = 'left';
+                context.font = `normal 30px sans-serif`;
+                context.fillStyle = 'white';
+                context.textAlign = 'center';
                 context.textBaseline = 'top';
-                context.fillText('hello', 10, 10);
+                context.fillText('不错不错！', info.width / 2, info.height - 50);
                 list.push(newCanvas);
             }
             resolve(list);
@@ -70,7 +70,7 @@ function canvas2gif(canvasList, { width, height }) {
             height: height,
             workerScript: '/lib/gif.worker.js',
         });
-        canvasList.forEach(canvas => gif.addFrame(canvas, { delay: 200 }));
+        canvasList.forEach(canvas => gif.addFrame(canvas, { delay: 100 }));
 
         gif.on('finished', function (blob) {
             var url = URL.createObjectURL(blob);
